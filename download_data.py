@@ -5,6 +5,7 @@ import math
 import os
 import shutil
 from pathlib import Path
+from tqdm import tqdm
 
 ARkitscense_url = (
     "https://docs-assets.developer.apple.com/ml-research/datasets/arkitscenes/v1"
@@ -271,7 +272,7 @@ def download_data(
                 video_id, metadata, download_dir
             )
 
-        for file_name in file_names:
+        for file_name in tqdm(file_names):
             dst_path = os.path.join(dst_dir, file_name)
             url = url_prefix.format(file_name)
 
