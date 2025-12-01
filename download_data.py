@@ -241,7 +241,7 @@ def download_data(
         return
 
     download_dir = os.path.abspath(download_dir)
-    for video_id in sorted(set(video_ids)):
+    for video_id in tqdm(sorted(set(video_ids)), desc="video ids"):
         split = dataset_splits[video_ids.index(video_id)]
         dst_dir = os.path.join(download_dir, dataset, split)
         if dataset == "raw":
@@ -272,7 +272,7 @@ def download_data(
                 video_id, metadata, download_dir
             )
 
-        for file_name in tqdm(file_names):
+        for file_name in file_names:
             dst_path = os.path.join(dst_dir, file_name)
             url = url_prefix.format(file_name)
 
